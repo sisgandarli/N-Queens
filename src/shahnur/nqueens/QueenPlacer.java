@@ -44,7 +44,7 @@ public class QueenPlacer {
     }
 
     /**
-     * This method tries to solve constraint satisfaction problem called "N-Queens"
+     * This method tries to solve constraint satisfaction problem called "N-Queens".
      */
     public void placeQueens() {
         boolean result = placeQueens(this.board, 0);
