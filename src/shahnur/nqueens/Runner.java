@@ -9,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.LabelBuilder;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -16,10 +17,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- @author Shahnur Isgandarli
+ * @author Shahnur Isgandarli
  */
 public class Runner extends Application {
     private QueenPlacer queenPlacer;
@@ -31,6 +33,7 @@ public class Runner extends Application {
 
     /**
      * This method places the N Queens in correct positions.
+     *
      * @param n The size of the board.
      */
     private void placeNQuenns(int n) {
@@ -43,23 +46,41 @@ public class Runner extends Application {
      * This method is used in event-handler operations.
      * All it does it changes the result grid and resizes
      * the stage.
+     *
      * @param stage The stage of the JavaFX application.
      */
-    private void eventHandler(Stage stage) {
+    private void processEvent(Stage stage) {
         if (vBox.getChildren().size() > 1) {
             vBox.getChildren().remove(vBox.getChildren().size() - 1);
         }
-        placeNQuenns(Integer.parseInt(textField.getText()));
-        GridPane grid = board.getGrid();
-        grid.setAlignment(Pos.CENTER);
-
-        vBox.getChildren().add(grid);
+        try {
+            int sizeOfTheBoard = Integer.parseInt(textField.getText());
+            if (sizeOfTheBoard > 19) {
+                Label tooLargeNumber = new Label(String.format("The board size %d is too large!", sizeOfTheBoard));
+                tooLargeNumber.setTextFill(Color.RED);
+                vBox.getChildren().add(tooLargeNumber);
+            } else if (sizeOfTheBoard < 4) {
+                Label noSolutions = new Label(String.format("No Solution exist for the board size %d", sizeOfTheBoard));
+                noSolutions.setTextFill(Color.RED);
+                vBox.getChildren().add(noSolutions);
+            } else {
+                placeNQuenns(sizeOfTheBoard);
+                GridPane grid = board.getGrid();
+                grid.setAlignment(Pos.CENTER);
+                vBox.getChildren().add(grid);
+            }
+        } catch (NumberFormatException e) {
+            Label enterANumber = new Label("Please, enter an integer number.");
+            enterANumber.setTextFill(Color.RED);
+            vBox.getChildren().add(enterANumber);
+        }
         stage.sizeToScene();
     }
 
     /**
      * This method starts the stage and does necessary operations
      * for displaying the result.
+     *
      * @param stage The stage of the JavaFX application.
      * @throws Exception
      */
@@ -80,7 +101,7 @@ public class Runner extends Application {
             @Override
             public void handle(KeyEvent event) {
                 if (event.getCode() == KeyCode.ENTER) {
-                    eventHandler(stage);
+                    processEvent(stage);
                 }
             }
         });
@@ -92,7 +113,7 @@ public class Runner extends Application {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                eventHandler(stage);
+                processEvent(stage);
             }
         });
         hBox.getChildren().addAll(label, textField, button);
