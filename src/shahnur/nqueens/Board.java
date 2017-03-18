@@ -5,8 +5,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 /**
- @author Shahnur Isgandarli
+ * @author Shahnur Isgandarli
  */
+
 public class Board {
     private Image queenWhite = new Image("file:img/queen-white.png");
     private Image queenBlue = new Image("file:img/queen-blue.png");
@@ -20,7 +21,8 @@ public class Board {
 
     /**
      * This is constructor of {@link Board} class.
-     * @param size The size of the chess board.
+     *
+     * @param size   The size of the chess board.
      * @param placer The QueenPlacer instance.
      */
     public Board(int size, QueenPlacer placer) {
@@ -49,8 +51,9 @@ public class Board {
     /**
      * This method creates a desired ImageView specified by parameters of the method
      * and returns it.
-     * @param i The row of the board.
-     * @param j The column of the board.
+     *
+     * @param i     The row of the board.
+     * @param j     The column of the board.
      * @param value The value of the board: 1 (one) if there is a queen, and 0 (zero) otherwise.
      * @return ImageView
      */
@@ -100,6 +103,7 @@ public class Board {
 
     /**
      * This is a getter method for retrieving the grid.
+     *
      * @return GridPane
      */
     public GridPane getGrid() {

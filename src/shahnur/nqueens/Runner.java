@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 /**
  * @author Shahnur Isgandarli
  */
+
 public class Runner extends Application {
     private QueenPlacer queenPlacer;
     private Board board;

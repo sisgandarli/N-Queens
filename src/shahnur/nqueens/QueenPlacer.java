@@ -3,12 +3,14 @@ package shahnur.nqueens;
 /**
  * @author Shahnur Isgandarli
  */
+
 public class QueenPlacer {
     private int[][] board;
     private int size;
 
     /**
      * This is constructor of {@link QueenPlacer} class.
+     *
      * @param size The size of the chess board.
      */
     public QueenPlacer(int size) {
@@ -19,9 +21,10 @@ public class QueenPlacer {
     /**
      * This method checks if it is possible to place a queen on
      * a given cell specified by row and column numbers.
+     *
      * @param board The board.
-     * @param row The specified row number.
-     * @param col The specified column number.
+     * @param row   The specified row number.
+     * @param col   The specified column number.
      * @return boolean Returns true if it is possible to place a queen, otherwise returns false.
      */
     private boolean canPlace(int[][] board, int row, int col) {
@@ -53,8 +56,9 @@ public class QueenPlacer {
     /**
      * This method is uses backtracking search in order to solve
      * constraint satisfaction problem called "N-Queens".
+     *
      * @param board The board.
-     * @param col The specified column number.
+     * @param col   The specified column number.
      * @return boolean Returns true if there is a solution to "N-Queens" problems, otherwise returns false.
      */
     private boolean placeQueens(int[][] board, int col) {
@@ -75,6 +79,7 @@ public class QueenPlacer {
 
     /**
      * This is a getter method for retrieving the board.
+     *
      * @return int[][]
      */
     public int[][] getBoard() {
