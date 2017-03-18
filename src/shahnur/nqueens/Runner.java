@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -96,6 +97,10 @@ public class Runner extends Application {
         });
         hBox.getChildren().addAll(label, textField, button);
         hBox.setAlignment(Pos.CENTER_RIGHT);
+
+        stage.setMinWidth(250);
+        stage.getIcons().add(new Image("file:img/icon.png"));
+        stage.setTitle("N-Queens Solver");
         stage.setScene(new Scene(vBox));
         stage.show();
     }
