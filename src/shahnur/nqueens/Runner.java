@@ -128,7 +128,7 @@ public class Runner extends Application {
         vBox.setAlignment(Pos.CENTER_RIGHT);
         vBox.setMinWidth(minimumWidth);
 
-        stage.getIcons().add(new Image("file:img/icon.png"));
+        stage.getIcons().add(new Image("icon.png"));
         stage.setTitle("N-Queens Solver");
         stage.setScene(new Scene(vBox));
         stage.setResizable(false);
