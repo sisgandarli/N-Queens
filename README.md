@@ -4,6 +4,6 @@ The algorithm used to solve this **constraint satisfaction problems** is called 
 # Usage
 
 # Result
-<p>
+<p align="center">
   <img src="http://i.imgur.com/hiwZ487.png" />
 </p>
