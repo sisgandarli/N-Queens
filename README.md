@@ -14,4 +14,4 @@ Here is one of the solution boards for 8 queens:
 
 ![board]
 
-[board]: http://imgur.com/3uZ6h81
+[board]: http://i.imgur.com/3uZ6h81.png
