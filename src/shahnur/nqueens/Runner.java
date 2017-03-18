@@ -11,7 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class Runner extends Application {
     private QueenPlacer queenPlacer;
     private Board board;
     private Label label;
@@ -75,7 +75,5 @@ public class Main extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+
 }
