@@ -9,7 +9,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.LabelBuilder;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
@@ -25,6 +24,9 @@ import javafx.stage.Stage;
  */
 
 public class Runner extends Application {
+    private final int defaultValue = 5;
+    private final int minimumWidth = 250;
+    private final Insets defaultInsets = new Insets(defaultValue);
     private QueenPlacer queenPlacer;
     private Board board;
     private Label label;
@@ -60,10 +62,12 @@ public class Runner extends Application {
                 Label tooLargeNumber = new Label(String.format("The board size %d is too large!", sizeOfTheBoard));
                 tooLargeNumber.setTextFill(Color.RED);
                 vBox.getChildren().add(tooLargeNumber);
+                vBox.setMargin(tooLargeNumber, defaultInsets);
             } else if (sizeOfTheBoard < 4) {
                 Label noSolutions = new Label(String.format("No Solution exist for the board size %d", sizeOfTheBoard));
                 noSolutions.setTextFill(Color.RED);
                 vBox.getChildren().add(noSolutions);
+                vBox.setMargin(noSolutions, defaultInsets);
             } else {
                 placeNQuenns(sizeOfTheBoard);
                 GridPane grid = board.getGrid();
@@ -74,6 +78,7 @@ public class Runner extends Application {
             Label enterANumber = new Label("Please, enter an integer number.");
             enterANumber.setTextFill(Color.RED);
             vBox.getChildren().add(enterANumber);
+            vBox.setMargin(enterANumber, defaultInsets);
         }
         stage.sizeToScene();
     }
@@ -91,13 +96,11 @@ public class Runner extends Application {
 
         HBox hBox = new HBox();
 
-        label = new Label("Select number of Queens");
-        label.setPadding(new Insets(5));
+        label = new Label("Select Number of Queens");
 
         textField = new TextField();
         textField.setMaxWidth(40);
         textField.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-        textField.setPadding(new Insets(5));
         textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -108,22 +111,28 @@ public class Runner extends Application {
         });
 
         button = new Button("Run!");
-        button.setPadding(new Insets(5));
-
-        vBox.getChildren().add(hBox);
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 processEvent(stage);
             }
         });
+
         hBox.getChildren().addAll(label, textField, button);
+        hBox.setMargin(label, defaultInsets);
+        hBox.setMargin(textField, defaultInsets);
+        hBox.setMargin(button, defaultInsets);
         hBox.setAlignment(Pos.CENTER_RIGHT);
 
-        stage.setMinWidth(250);
+        vBox.getChildren().add(hBox);
+        vBox.setAlignment(Pos.CENTER_RIGHT);
+        vBox.setMinWidth(minimumWidth);
+        
         stage.getIcons().add(new Image("file:img/icon.png"));
         stage.setTitle("N-Queens Solver");
         stage.setScene(new Scene(vBox));
+        stage.setResizable(false);
+        stage.sizeToScene();
         stage.show();
     }
 }
