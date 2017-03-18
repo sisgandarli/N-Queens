@@ -1,54 +1,83 @@
 package shahnur.nqueens;
 
+/**
+ * @author Shahnur Isgandarli
+ */
 public class QueenPlacer {
-    private int[][] cells;
+    private int[][] board;
     private int size;
 
+    /**
+     * This is constructor of {@link QueenPlacer} class.
+     * @param size The size of the chess board.
+     */
     public QueenPlacer(int size) {
         this.size = size;
-        this.cells = new int[size][size];
+        this.board = new int[size][size];
     }
 
-    private boolean canPlace(int[][] cells, int row, int col) {
+    /**
+     * This method checks if it is possible to place a queen on
+     * a given cell specified by row and column numbers.
+     * @param board The board.
+     * @param row The specified row number.
+     * @param col The specified column number.
+     * @return boolean Returns true if it is possible to place a queen, otherwise returns false.
+     */
+    private boolean canPlace(int[][] board, int row, int col) {
         for (int i = 0; i < col; i++) {
-            if (cells[row][i] == 1) {
+            if (board[row][i] == 1) {
                 return false;
             }
         }
         for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
-            if (cells[i][j] == 1) {
+            if (board[i][j] == 1) {
                 return false;
             }
         }
         for (int i = row, j = col; i < size && j >= 0; i++, j--) {
-            if (cells[i][j] == 1) {
+            if (board[i][j] == 1) {
                 return false;
             }
         }
         return true;
     }
 
+    /**
+     * This method tries to solve constraint satisfaction problem called "N-Queens"
+     */
     public void placeQueens() {
-        boolean result = placeQueens(this.cells, 0);
+        boolean result = placeQueens(this.board, 0);
     }
 
-    private boolean placeQueens(int[][] cells, int col) {
+    /**
+     * This method is uses backtracking search in order to solve
+     * constraint satisfaction problem called "N-Queens".
+     * @param board The board.
+     * @param col The specified column number.
+     * @return boolean Returns true if there is a solution to "N-Queens" problems, otherwise returns false.
+     */
+    private boolean placeQueens(int[][] board, int col) {
         if (col >= size) {
             return true;
         }
         for (int i = 0; i < size; i++) {
-            if (canPlace(cells, i, col)) {
-                cells[i][col] = 1;
-                if (placeQueens(cells, col + 1)) {
+            if (canPlace(board, i, col)) {
+                board[i][col] = 1;
+                if (placeQueens(board, col + 1)) {
                     return true;
                 }
-                cells[i][col] = 0;
+                board[i][col] = 0;
             }
         }
         return false;
     }
 
-    public int[][] getCells() {
-        return cells;
+    /**
+     * This is a getter method for retrieving the board.
+     * @return int[][]
+     */
+    public int[][] getBoard() {
+        return board;
     }
 }
