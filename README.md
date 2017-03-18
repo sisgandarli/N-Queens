@@ -1,6 +1,16 @@
 # N-Queens
 The project's aim is to solve famous "N-Queens" problem and visualize one of the solution boards.
 The algorithm used to solve this **constraint satisfaction problem** is called **_backtracking search algorithm_**.
+
+1. Make my changes
+  1. Fix bug
+  2. Improve formatting
+    * Make the headings bigger
+2. Push my commits to GitHub
+3. Open a pull request
+  * Describe my changes
+  * Mention all the members of my team
+    * Ask for feedback
 # Usage
 1. Download the project
 2. Import the project to a Java IDE (Intellij IDEA is preferred)
