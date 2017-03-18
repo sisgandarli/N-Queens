@@ -1,16 +1,25 @@
 package shahnur.nqueens;
 
 import javafx.application.Application;
-import javafx.event.*;
-import javafx.scene.input.*;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ @author Shahnur Isgandarli
+ */
 public class Runner extends Application {
     private QueenPlacer queenPlacer;
     private Board board;
@@ -19,12 +28,22 @@ public class Runner extends Application {
     private Button button;
     private VBox vBox;
 
+    /**
+     * This method places the N Queens in correct positions.
+     * @param n The size of the board.
+     */
     private void placeNQuenns(int n) {
         queenPlacer = new QueenPlacer(n);
         board = new Board(n, queenPlacer);
-        board.drawBoard();
+        board.generateBoard();
     }
 
+    /**
+     * This method is used in event-handler operations.
+     * All it does it changes the result grid and resizes
+     * the stage.
+     * @param stage The stage of the JavaFX application.
+     */
     private void eventHandler(Stage stage) {
         if (vBox.getChildren().size() > 1) {
             vBox.getChildren().remove(vBox.getChildren().size() - 1);
@@ -37,6 +56,12 @@ public class Runner extends Application {
         stage.sizeToScene();
     }
 
+    /**
+     * This method starts the stage and does necessary operations
+     * for displaying the result.
+     * @param stage The stage of the JavaFX application.
+     * @throws Exception
+     */
     @Override
     public void start(Stage stage) throws Exception {
         vBox = new VBox();
@@ -74,6 +99,4 @@ public class Runner extends Application {
         stage.setScene(new Scene(vBox));
         stage.show();
     }
-
-
 }
