@@ -17,3 +17,7 @@ Here is one of the solution boards for 8 queens:
 ![board]
 
 [board]: http://i.imgur.com/3uZ6h81.png
+# License
+MIT licensed
+
+Copyright © 2017 Shahnur Isgandarli, [@sisgandarli](https://github.com/sisgandarli)
