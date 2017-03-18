@@ -8,11 +8,11 @@ The algorithm used to solve this **constraint satisfaction problem** is called *
 4. Write the number of queens in the text box 
 5. Click "Run!" button
 6. See the result
-..* If your input was not correct (empty box or non-numeric characters) you will see an error message
+  * If your input was not correct (empty box or non-numeric characters) you will see an error message
 
-..* Else if your input is larger than 19, you will receive an message informing that the number is too large. This constaint is used because of time complexity of backtracking search algorithm
+  * Else if your input is larger than 19, you will receive an message informing that the number is too large. This constaint is used because of time complexity of backtracking search algorithm
 
-..* Else you will see one of the solution boards of famous "N-Queens" problem
+  * Else you will see one of the solution boards of famous "N-Queens" problem
 # Result
 Here is one of the solution boards for 8 queens:
 ![board]
