@@ -9,10 +9,10 @@ import javafx.scene.layout.GridPane;
  */
 
 public class Board {
-    private Image queenWhite = new Image("queen-white.png");
-    private Image queenBlue = new Image("queen-blue.png");
-    private Image white = new Image("white.png");
-    private Image blue = new Image("blue.png");
+    private Image queenWhite = new Image("file:img/queen-white.png");
+    private Image queenBlue = new Image("file:img/queen-blue.png");
+    private Image white = new Image("file:img/white.png");
+    private Image blue = new Image("file:img/blue.png");
 
     private GridPane grid;
     private int size;
