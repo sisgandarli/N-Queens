@@ -2,6 +2,7 @@ package shahnur.nqueens;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.NodeOrientation;
@@ -83,6 +84,18 @@ public class Runner extends Application {
         stage.sizeToScene();
     }
 
+    private void handle(KeyEvent event, Stage stage) {
+        if (event.getCode() == KeyCode.ENTER) {
+            processEvent(stage);
+        }
+    }
+
+    private void handle(ActionEvent event, Stage stage) {
+        if (event.getSource() == button) {
+            processEvent(stage);
+        }
+    }
+
     /**
      * This method starts the stage and does necessary operations
      * for displaying the result.
@@ -101,22 +114,10 @@ public class Runner extends Application {
         textField = new TextField();
         textField.setMaxWidth(40);
         textField.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-        textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if (event.getCode() == KeyCode.ENTER) {
-                    processEvent(stage);
-                }
-            }
-        });
+        textField.setOnKeyPressed(event -> handle(event, stage));
 
         button = new Button("Run!");
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                processEvent(stage);
-            }
-        });
+        button.setOnAction(event -> handle(event, stage));
 
         hBox.getChildren().addAll(label, textField, button);
         hBox.setMargin(label, defaultInsets);
@@ -128,7 +129,7 @@ public class Runner extends Application {
         vBox.setAlignment(Pos.CENTER_RIGHT);
         vBox.setMinWidth(minimumWidth);
 
-        stage.getIcons().add(new Image("icon.png"));
+        stage.getIcons().add(new Image("file:img/icon.png"));
         stage.setTitle("N-Queens Solver");
         stage.setScene(new Scene(vBox));
         stage.setResizable(false);
